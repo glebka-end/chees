@@ -1,0 +1,15 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <input type="text" formControlName="status" >
+  <input type="text" formControlName="is_online" >
+<!--  <input type="text">-->
+<!--  <input type="text">-->
+<!--  <input type="text">-->
+<!--  <input type="text">-->
+<!--  <input type="text">-->
+<!--  <input type="text">-->
+<!--  <input type="text">-->
+<!--  <input type="text">-->
+<!--  <input type="text">-->
+  <button class="submit-btn" type="submit" [disabled]="form.invalid">обновить</button>
+
+</form>

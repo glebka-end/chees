@@ -26,13 +26,26 @@ return this.hhtp.post<User>('http://127.0.0.1:/api/user/register',user)
         )
       )
   }
-  setToken(token: string){
+  // setToken(token: string){
+  //
+  //   this.token=token
+  // }
+  setToken(token: string) {
+    localStorage.setItem('auth-token', token);
+    this.token = token;
+  }
 
-    this.token=token
+  // getToken():string{
+  //   return this.token
+  // }
+  getToken(): string {
+    const localToken = localStorage.getItem('auth-token');
+    if (localToken) {
+      this.setToken(localToken);
+    }
+    return this.token;
   }
-  getToken():string{
-    return this.token
-  }
+
   isAuthenticated():boolean{
     return !!this.token
   }

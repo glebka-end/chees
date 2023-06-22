@@ -12,7 +12,10 @@ import { AuthLayoutComponent } from './shared/layouts/auth-layout/auth-layout.co
 import { SiteLayoutComponent } from './shared/layouts/site-layout/site-layout.component';
 import {TokenInterceptor} from "./shared/classes/token.interceptor";
 import { OverviewPageComponent } from './overview-page/overview-page.component';
-
+import {EditProfileComponent} from "./overview-page/edit-profile/edit-profile.component";
+import {JwtInterceptor} from "./overview-page/services/jwtInterceptor";
+// import { EditProfileComponent } from './overview-page/edit-profile/edit-profile.component';
+// import { ProfileServiceComponent } from './overview-page/edit-profile/profile.service/profile.service.component';
 
 
 
@@ -24,14 +27,17 @@ import { OverviewPageComponent } from './overview-page/overview-page.component';
     RegisterPageComponent,
     AuthLayoutComponent,
     SiteLayoutComponent,
-    OverviewPageComponent
+    OverviewPageComponent,
+    EditProfileComponent,
+
 
   ],
   providers:[
     {
       provide:HTTP_INTERCEPTORS,
       multi:true,
-      useClass:TokenInterceptor
+      useClass:TokenInterceptor,
+    //  provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true
 
     }
   ],
@@ -40,7 +46,9 @@ import { OverviewPageComponent } from './overview-page/overview-page.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
 
   bootstrap: [AppComponent]

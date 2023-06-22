@@ -7,6 +7,11 @@ import {RegisterPageComponent} from "./register-page/register-page.component";
 import {AuthGuard} from "./shared/classes/auth.guard";
 import {OverviewPageComponent} from "./overview-page/overview-page.component";
 import {EditProfileComponent} from "./overview-page/edit-profile/edit-profile.component";
+import {ProfileCPageComponent} from "./profile-c-page/profile-c-page.component";
+import {TasksPageComponent} from "./tasks-page/tasks-page.component";
+import {DebutsPageComponent} from "./debuts-page/debuts-page.component";
+import {PlayPageComponent} from "./play-page/play-page.component";
+import {ArticlesPageComponent} from "./articles-page/articles-page.component";
 
 
 
@@ -21,11 +26,16 @@ const routes: Routes = [
   },
   {
     path: '', component: SiteLayoutComponent, canActivate:[AuthGuard] ,children:[
-      {path: 'overview' , component: EditProfileComponent, children:[
-       //   {path: 'edit' , component: EditProfileComponent},
+      {path: 'overview' , component: OverviewPageComponent},
+      {path: 'profile-y' , component: ProfileCPageComponent},
+      {path: 'tasks' , component: TasksPageComponent},
+      {path: 'debuts' , component:DebutsPageComponent },
+      {path: 'play' , component: PlayPageComponent},
+      {path: 'articles' , component: ArticlesPageComponent},
+
         ] },
-    ]
-  }
+
+
 ];
 
 @NgModule({

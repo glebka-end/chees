@@ -1,0 +1,32 @@
+.sidenav {
+  text-align: center;
+  background-color: black;
+}
+
+.sidenav h4 {
+  margin-bottom: 10px;
+  color: white;
+}
+
+.sidenav li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.sidenav li:last-child {
+  margin-right: 0;
+}
+
+.sidenav li a {
+  color: white;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+.sidenav li span {
+  color: white;
+  cursor: pointer;
+}
+.bold{
+  color: #f8f8f8;
+}

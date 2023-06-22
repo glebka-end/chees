@@ -14,7 +14,7 @@ class interfrofil {
   providedIn: 'root'
 })
 export class ProfileService {
-  private token =''//
+  private token ='72|1Xq8ERcOrpH0HV4UHJ8jG4NYqqN4UfinhJ9cazOI'//
   private a =''
 
   constructor(private http: HttpClient) {
@@ -23,7 +23,7 @@ export class ProfileService {
   //    return this.hhtp.post<interfrofil>('http://127.0.0.1:/api/users/users/update-profile',interfrofil)
   // }
   sendData(data: any) {
-    const url = 'http://127.0.0.1:80/api/comment/{commentId}/likes'; // замените на свой URL
+    const url = 'http://127.0.0.1:80/api/users/users/update-profile'; // замените на свой URL
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
     const options = { headers: headers };
     return this.http.put(url, data);

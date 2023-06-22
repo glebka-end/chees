@@ -1,2 +1,22 @@
 
-<router-outlet></router-outlet>
+
+
+<!--<h1 class="a">профиль</h1>-->
+<ul class="sidenav">
+  <h4 class="">pytko_chees</h4>
+
+  <li class="bold" *ngFor="let link of links">
+    <a [routerLink]="[link.url]" class="waves-effect">
+      {{link.name}}
+    </a>
+  </li>
+
+  <li class="bold" >
+    <a href="" (click)="log($event)"> Выйти</a></li>
+</ul>
+
+<main class="content">
+  <router-outlet></router-outlet>
+</main>
+
+

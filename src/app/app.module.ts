@@ -13,7 +13,7 @@ import { SiteLayoutComponent } from './shared/layouts/site-layout/site-layout.co
 import {TokenInterceptor} from "./shared/classes/token.interceptor";
 import { OverviewPageComponent } from './overview-page/overview-page.component';
 import {EditProfileComponent} from "./overview-page/edit-profile/edit-profile.component";
-import {JwtInterceptor} from "./overview-page/services/jwtInterceptor";
+
 // import { EditProfileComponent } from './overview-page/edit-profile/edit-profile.component';
 // import { ProfileServiceComponent } from './overview-page/edit-profile/profile.service/profile.service.component';
 

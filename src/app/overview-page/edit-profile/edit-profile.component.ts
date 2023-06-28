@@ -1,7 +1,8 @@
 import {Component, OnInit,OnDestroy} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Subscription} from "rxjs";
-import {ProfileService} from "../services/profile.service";
+import {ProfileY} from "../../shared/services/profile-y";
+import {ProfileService} from "../../shared/services/profile.service";
 
 
 interface ApiResponse {
@@ -20,7 +21,7 @@ export class EditProfileComponent implements OnInit{
   error: object | null = null;
 
 
-  constructor(private fd: FormBuilder, private profileService: ProfileService) {
+  constructor(private fd: FormBuilder, private profileService: ProfileService,private  ProfileY: ProfileY) {
 
   }
 //   ngOnInit() {
@@ -49,11 +50,15 @@ export class EditProfileComponent implements OnInit{
       status: ( [Validators.required,]),
       is_online: ( [Validators.required, ]),
     });
+
   }
 
   onSubmit() {
     const data = this.form.value;
-    this.profileService.sendData(data).subscribe((response: ApiResponse) => console.log(response));
+    this.profileService.sendData(data).subscribe
+    ((response: ApiResponse) => console.log(response));
+    const token = localStorage.getItem('auth-token');
+
   }
 
 }

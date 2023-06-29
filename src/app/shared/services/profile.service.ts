@@ -18,14 +18,32 @@ export class ProfileService {
   // const token = localStorage.getItem('auth-token');
 
 
-  private token: string;
+  private token2: string;
 
 
   constructor(private http: HttpClient) {
-    this.token = localStorage.getItem('auth-token') || '';
-    console.log(this.token)
-
+    this.token2 = localStorage.getItem('auth-token') || '';
+    console.log(this.token2)
   }
+  sendData(formData: any): Observable<any> {
+    console.log('pytko',this.token2)
+    // const headers = new HttpHeaders({
+    //   'Content-Type': 'application/json',
+    //   'Authorization': `Bearer ${this.token2}`
+    // })
+    // console.log(headers)
+    return this.http.put('http://127.0.0.1:80/api/users/users/update-profile',formData)
+  }
+}
+
+
+
+
+
+
+
+
+
 
 //   sendData(formData: any) {
 //
@@ -38,15 +56,7 @@ export class ProfileService {
 //   }
 // }
 
-  sendData(formData: any): Observable<any> {
-    console.log(this.token)
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer34234234 ${this.token}`
-    })
-    return this.http.post('http://127.0.0.1:80/api/users/self-new-post',null)
-  }
-}
+
 //
 //   sendData(formData: any) {
 //     console.log(this.token)

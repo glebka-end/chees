@@ -31,9 +31,11 @@ return this.hhtp.post<User>('http://127.0.0.1:/api/user/register',user)
   //   this.token=token
   // }
   setToken(token: string) {
-    localStorage.setItem('auth-token', token);
-    this.token = token;
+    const bearerToken = `Bearer ${token}`;
+    localStorage.setItem('auth-token', bearerToken);
+    this.token = bearerToken;
   }
+
 
   // getToken():string{
   //   return this.token

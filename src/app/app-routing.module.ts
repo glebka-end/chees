@@ -21,8 +21,8 @@ const routes: Routes = [
   },
   {
     path: '', component: SiteLayoutComponent, canActivate:[AuthGuard] ,children:[
-      {path: 'overview' , component: EditProfileComponent, children:[
-       //   {path: 'edit' , component: EditProfileComponent},
+      {path: 'overview' , component: OverviewPageComponent, children:[
+         {path: 'edit' , component: EditProfileComponent},
         ] },
     ]
   }

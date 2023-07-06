@@ -1,15 +1,23 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <input type="text" formControlName="status" >
-  <input type="text" formControlName="is_online" >
-<!--  <input type="text">-->
-<!--  <input type="text">-->
-<!--  <input type="text">-->
-<!--  <input type="text">-->
-<!--  <input type="text">-->
-<!--  <input type="text">-->
-<!--  <input type="text">-->
-<!--  <input type="text">-->
-<!--  <input type="text">-->
-  <button class="submit-btn" type="submit" [disabled]="form.invalid">обновить</button>
+<div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label for="first_name">First Name:</label>
+    <input type="text" id="first_name" formControlName="first_name">
 
-</form>
+    <label for="last_name">Last Name:</label>
+    <input type="text" id="last_name" formControlName="last_name">
+
+    <label for="status">Status (1 or 2):</label>
+    <input type="text" id="status" formControlName="status" pattern="[12]" title="Введите число 1 или 2">
+
+    <label for="age">Age:</label>
+    <input type="text" id="age" formControlName="age">
+
+    <label for="gender">Gender:</label>
+    <input type="text" id="gender" formControlName="gender">
+
+    <label for="is_online">Is Online:</label>
+    <input type="text" id="is_online" formControlName="is_online">
+
+    <button class="submit-btn" type="submit" [disabled]="form.invalid">обновить</button>
+  </form>
+</div>

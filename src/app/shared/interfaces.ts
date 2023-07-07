@@ -7,4 +7,9 @@ export interface User {
   is_online: boolean;
   // Другие свойства пользователя
 }
+export interface Post {
+  title: string ;
+  contente: string;
+  image: string;
+}
 

@@ -7,6 +7,8 @@ import {RegisterPageComponent} from "./register-page/register-page.component";
 import {AuthGuard} from "./shared/classes/auth.guard";
 import {OverviewPageComponent} from "./overview-page/overview-page.component";
 import {EditProfileComponent} from "./overview-page/edit-profile/edit-profile.component";
+import {ProfilePageComponent} from "./overview-page/profile-page/profile-page.component";
+// import {ProfilePageComponent} from "./overview-page/profile-page/profile-page.component";
 
 
 
@@ -23,6 +25,7 @@ const routes: Routes = [
     path: '', component: SiteLayoutComponent, canActivate:[AuthGuard] ,children:[
       {path: 'overview' , component: OverviewPageComponent, children:[
          {path: 'edit' , component: EditProfileComponent},
+           {path: 'profile' , component: ProfilePageComponent},
         ] },
     ]
   }

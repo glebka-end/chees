@@ -13,6 +13,9 @@ import { SiteLayoutComponent } from './shared/layouts/site-layout/site-layout.co
 import {TokenInterceptor} from "./shared/classes/token.interceptor";
 import { OverviewPageComponent } from './overview-page/overview-page.component';
 import {EditProfileComponent} from "./overview-page/edit-profile/edit-profile.component";
+import { ProfilePageComponent } from './overview-page/profile-page/profile-page.component';
+import { PostListComponent } from './overview-page/post-list/post-list.component';
+
 
 // import { EditProfileComponent } from './overview-page/edit-profile/edit-profile.component';
 // import { ProfileServiceComponent } from './overview-page/edit-profile/profile.service/profile.service.component';
@@ -29,6 +32,10 @@ import {EditProfileComponent} from "./overview-page/edit-profile/edit-profile.co
     SiteLayoutComponent,
     OverviewPageComponent,
     EditProfileComponent,
+    ProfilePageComponent,
+    PostListComponent,
+
+
 
 
   ],

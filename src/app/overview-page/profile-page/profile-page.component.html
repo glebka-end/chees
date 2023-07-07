@@ -1,0 +1,36 @@
+<div class="profile-container">
+  <h2>Profile</h2>
+
+  <div class="profile-info">
+    <div class="info-group">
+      <label>First Name:</label>
+      <span>{{ user?.first_name }}</span>
+    </div>
+
+    <div class="info-group">
+      <label>Last Name:</label>
+      <span>{{ user?.last_name }}</span>
+    </div>
+
+    <div class="info-group">
+      <label>Status:</label>
+      <span>{{ user?.status }}</span>
+    </div>
+
+    <div class="info-group">
+      <label>Age:</label>
+      <span>{{ user?.age }}</span>
+    </div>
+
+    <div class="info-group">
+      <label>Gender:</label>
+      <span>{{ user?.gender }}</span>
+    </div>
+
+    <div class="info-group">
+      <label>Is Online:</label>
+      <span>{{ user?.is_online }}</span>
+    </div>
+  </div>
+</div>
+<app-post-list></app-post-list>

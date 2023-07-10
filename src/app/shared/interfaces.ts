@@ -8,8 +8,17 @@ export interface User {
   // Другие свойства пользователя
 }
 export interface Post {
+  id:number;
   title: string ;
-  contente: string;
-  image: string;
+  content: string;
+  image: string | null;
+}
+
+
+
+export interface CreatePost {
+  title: string ;
+  content: string;
+  image: File;
 }
 

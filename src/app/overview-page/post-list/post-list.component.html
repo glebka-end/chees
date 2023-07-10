@@ -1,7 +1,32 @@
-<p>post-list works!</p>
-<h1>Посты пользователя</h1>
+<!--<div *ngFor="let post of userPosts">-->
+<!--  <h2>{{ post.title }}</h2>-->
+<!--  <p>{{ post.contente }}</p>-->
+<!--  <img [src]="post.image" alt="Изображение поста">-->
+<!--  <button (click)="deletePost(post.id)">Удалить пост</button>-->
+<!--</div>-->
+<!-- post-list.component.html -->
 <div *ngFor="let post of userPosts">
   <h2>{{ post.title }}</h2>
-  <p>{{ post.contente }}</p>
+  <p>{{ post.content }}</p>
   <img [src]="post.image" alt="Изображение поста">
+  <button (click)="deletePost(post.id)">Удалить пост</button>
 </div>
+
+<!--<button (click)="openModal()">Создать пост</button>-->
+
+<!--&lt;!&ndash; Модальное окно для создания поста &ndash;&gt;-->
+<!--<div id="modal" [class.show]="modalOpen">-->
+<!--  <h3>Создание поста</h3>-->
+<!--  <form (submit)="createPost()">-->
+<!--    <label for="title">Заголовок:</label>-->
+<!--    <input type="text" id="title" required>-->
+
+<!--    <label for="content">Содержимое:</label>-->
+<!--    <textarea id="content" [(ngModel)]="newPost.content" required></textarea>-->
+
+<!--    <label for="image">Изображение:</label>-->
+<!--    <input type="file" id="image" (change)="handleImageUpload($event)">-->
+
+<!--    <button type="submit">Создать</button>-->
+<!--  </form>-->
+<!--</div>-->

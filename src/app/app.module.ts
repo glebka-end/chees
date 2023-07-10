@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -15,6 +15,8 @@ import { OverviewPageComponent } from './overview-page/overview-page.component';
 import {EditProfileComponent} from "./overview-page/edit-profile/edit-profile.component";
 import { ProfilePageComponent } from './overview-page/profile-page/profile-page.component';
 import { PostListComponent } from './overview-page/post-list/post-list.component';
+import { FormsModule } from '@angular/forms';
+import { CreatPostComponent } from './overview-page/creat-post/creat-post.component';
 
 
 // import { EditProfileComponent } from './overview-page/edit-profile/edit-profile.component';
@@ -34,6 +36,7 @@ import { PostListComponent } from './overview-page/post-list/post-list.component
     EditProfileComponent,
     ProfilePageComponent,
     PostListComponent,
+    CreatPostComponent,
 
 
 
@@ -54,8 +57,9 @@ import { PostListComponent } from './overview-page/post-list/post-list.component
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
+
+
+
   ],
 
   bootstrap: [AppComponent]

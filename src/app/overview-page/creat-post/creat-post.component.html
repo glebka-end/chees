@@ -1,0 +1,15 @@
+<div>
+  <form [formGroup]="createPostForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+    <label for="title">Заголовок:</label>
+    <input id="title" type="text" formControlName="title">
+
+    <label for="content">Содержимое поста:</label>
+    <textarea id="content" formControlName="content"></textarea>
+
+    <label for="image">Изображение:</label>
+    <input id="image" type="file" formControlName="image">
+
+
+    <button class="create-post-btn" type="submit" [disabled]="createPostForm.invalid">Создать</button>
+  </form>
+</div>

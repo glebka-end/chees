@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ProfileService } from "../../shared/services/profile.service";
 import { User } from "../../shared/interfaces";
 
+
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.component.html',
@@ -12,7 +13,6 @@ export class EditProfileComponent implements OnInit {
   form!: FormGroup;
   error: object | null = null;
   user: User | null = null;
-
   constructor(private fb: FormBuilder, private profileService: ProfileService) {}
 
   ngOnInit() {

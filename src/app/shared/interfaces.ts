@@ -12,6 +12,7 @@ export interface Post {
   title: string ;
   content: string;
   image: string | null;
+  likes_count:number;
 }
 
 
@@ -19,6 +20,6 @@ export interface Post {
 export interface CreatePost {
   title: string ;
   content: string;
-  image: File;
+  image: File | null;
 }
 

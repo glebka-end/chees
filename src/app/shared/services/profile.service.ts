@@ -18,12 +18,17 @@ export class ProfileService {
 
   }
 
+  likePost(postId: string): Observable<User> {
+    const url = `http://127.0.0.1:80/api/users/post/${postId}/likes`;
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    return this.http.put<User>(url, null, { headers });
+  }
+
   getUserData(): Observable<User> {
     const url = 'http://127.0.0.1:80/api/users/users/profile';
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
     return this.http.get<User>(url, { headers });
   }
-
   // getPosts(): Observable<Post[]> {
   //   const url = 'http://127.0.0.1:80/api/user/posts'; // Укажите свой URL для получения постов
   //   const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
@@ -40,7 +45,15 @@ export class ProfileService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
     return this.http.put(url, post, { headers });
   }
-
+  // createPost(data: CreatePost): Observable<any> {
+  //   const url = 'http://127.0.0.1:80/api/users/self-new-post'; // Replace with your actual API endpoint
+  //   const formData = new formData();
+  //   formData.append('title', data.title);
+  //   formData.append('content', data.content);
+  //   formData.append('image', data.image);
+  //
+  //   return this.http.post(url, formData);
+  // }
   createPost(post: CreatePost, ): Observable<any> {
     const url = 'http://127.0.0.1:80/api/users/self-new-post'; // Укажите свой URL для создания поста
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);

@@ -54,7 +54,7 @@ export class ProfileService {
   //
   //   return this.http.post(url, formData);
   // }
-  createPost(post: CreatePost, ): Observable<any> {
+  createPost(post: any, ): Observable<any> {
     const url = 'http://127.0.0.1:80/api/users/self-new-post'; // Укажите свой URL для создания поста
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
     return this.http.post(url, post, { headers });

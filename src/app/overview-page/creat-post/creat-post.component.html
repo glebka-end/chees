@@ -28,7 +28,7 @@
 <!--    <button class="create-post-btn" type="submit" [disabled]="form.invalid">Создать</button>-->
 <!--  </form>-->
 <!--</div>-->
-
+///////
 <!--<div>-->
 <!--  <form [formGroup]="form" (ngSubmit)="onSubmit()" enctype="multipart/form-data">-->
 <!--    <label for="title">Заголовок:</label>-->
@@ -44,4 +44,16 @@
 <!--  </form>-->
 <!--</div>-->
 
-<p>wdawdd</p>
+<!--<p>wdawdd</p>-->
+
+
+<!--<form #f="ngForm" (ngSubmit)="onSubmitform(f)">-->
+<!--  <input type="file"  name="myFile" (change)="fileEvent($event)"/>-->
+<!--  <button>Upload Image</button>-->
+<!--</form>-->
+<form #f="ngForm" (ngSubmit)="onSubmitform(f)">
+  <input type="file" name="myFile" (change)="fileEvent($event)" />
+  <input type="text" name="contente" ngModel placeholder="Content" required />
+  <input type="text" name="title" ngModel placeholder="Title" required />
+  <button>Upload Image</button>
+</form>

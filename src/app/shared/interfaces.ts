@@ -20,6 +20,6 @@ export interface Post {
 export interface CreatePost {
   title: string ;
   content: string;
-  image: File | null;
+  image: any | null;
 }
 

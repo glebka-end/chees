@@ -5,14 +5,22 @@
 <!--  <button (click)="deletePost(post.id)">Удалить пост</button>-->
 <!--</div>-->
 <!-- post-list.component.html -->
-<div *ngFor="let post of userPosts">
-  <h2>{{ post.title }}</h2>
-  <p>{{ post.content }}</p>
-  <img [src]="post.image" alt="Изображение поста">
-  <button (click)="likePost(post)">Лайк {{ post.likes_count }} <i class="fa fa-heart" [class.active]="isPostLiked(post)"></i></button>
-  <button (click)="deletePost(post.id.toString())">Удалить пост</button>
-</div>
+<div class="post-container">
+  <div class="post" *ngFor="let post of userPosts">
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.content }}</p>
+    <img [src]="post.image" alt="Изображение поста">
+    <button (click)="likePost(post)">Лайк {{ post.likes_count }} <i class="fa fa-heart" [class.active]="isPostLiked(post)"></i></button>
+    <button (click)="deletePost(post.id.toString())">Удалить пост</button>
 
+    <h3>Комментарии:</h3>
+    <ul>
+      <li *ngFor="let comment of post.comment">
+        {{ comment.comment  }}
+      </li>
+    </ul>
+  </div>
+</div>
 
 
 <!--<button (click)="openModal()">Создать пост</button>-->

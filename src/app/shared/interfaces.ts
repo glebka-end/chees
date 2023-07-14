@@ -7,18 +7,27 @@ export interface User {
   is_online: boolean;
   // Другие свойства пользователя
 }
+
 export interface Post {
-  id:number;
-  title: string ;
+  id: number;
+  title: string;
   content: string;
   image: string | null;
-  likes_count:number;
+  likes_count: number;
+  comment: Comment[]; // Добавьте поле для комментариев
+}
+
+export interface Comment {
+  id: number;
+  postId: number;
+  comment: string;
+  //createdAt: string;
+  // Другие свойства комментария
 }
 
 
-
 export interface CreatePost {
-  title: string ;
+  title: string;
   content: string;
   image: any | null;
 }

@@ -18,6 +18,18 @@ export class ProfileService {
 
   }
 
+  getComments(postId: number): Observable<Comment[]> {
+    const url = `http://127.0.0.1:80/api/posts/${postId}/comments`; // Замените на свой URL для получения комментариев
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    return this.http.get<Comment[]>(url, { headers });
+  }
+
+  addComment(postId: number, content: string): Observable<Comment> {
+    const url = `http://127.0.0.1:80/api/users/posts/${postId}/comments`; // Замените на свой URL для добавления комментария
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    const body = { content };
+    return this.http.post<Comment>(url, body, { headers });
+  }
   likePost(postId: string): Observable<User> {
     const url = `http://127.0.0.1:80/api/users/post/${postId}/likes`;
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
@@ -45,6 +57,7 @@ export class ProfileService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
     return this.http.put(url, post, { headers });
   }
+
   // createPost(data: CreatePost): Observable<any> {
   //   const url = 'http://127.0.0.1:80/api/users/self-new-post'; // Replace with your actual API endpoint
   //   const formData = new formData();

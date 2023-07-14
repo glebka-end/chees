@@ -221,7 +221,7 @@ export class CreatPostComponent implements OnInit {
 
     const formData = new FormData();
     formData.append('immage', this.fileData);
-    formData.append('contente', f.value.content);
+    formData.append('contente', f.value.contente);
     formData.append('title', f.value.title);
 
     this.profileService.createPost(formData).subscribe(resp => {

@@ -22,7 +22,7 @@ img {
 }
 
 div {
-  max-width: 100px;
+  max-width: 700px;
   padding: 10px;
   border: 1px solid #ddd;
   margin-bottom: 20px;
@@ -31,8 +31,9 @@ div {
 // Добавляем стили для контейнера постов
 .post-container {
   display: flex;
-  flex-wrap: wrap;
+  //flex-wrap: wrap;
   justify-content: space-between;
+  margin-left: 25%;
 }
 
 // Стили для отдельного поста
@@ -41,24 +42,16 @@ div {
   margin-bottom: 20px;
   padding: 10px;
   border: 1px solid #ddd;
+}
 
-  h2 {
-    font-size: 18px;
-    margin-top: 10px;
-    margin-bottom: 5px;
+@media (max-width: 768px) {
+  .post {
+    width: calc(50% - 20px);
   }
+}
 
-  p {
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-  }
-  .fa-heart.active {
-    color: red;
+@media (max-width: 480px) {
+  .post {
+    width: 100%;
   }
 }

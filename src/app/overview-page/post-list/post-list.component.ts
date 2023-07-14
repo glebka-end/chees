@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from "../../shared/services/profile.service";
-import { Post } from "../../shared/interfaces";
+import { Post, Comment } from "../../shared/interfaces";
 
 @Component({
   selector: 'app-post-list',
@@ -9,24 +9,43 @@ import { Post } from "../../shared/interfaces";
 })
 export class PostListComponent implements OnInit {
   userPosts: Post[] = [];
+  userPostsC: Comment[] = [];
   modalOpen: boolean = false;
+  newCommentContent: string = '';
 
   constructor(private profileService: ProfileService) {}
 
   ngOnInit(): void {
     this.loadPosts();
+    // this.loadComments();
   }
-
   loadPosts(): void {
     this.profileService.getPosts().subscribe(
       (posts: Post[]) => {
         this.userPosts = posts;
+        console.log(this.userPosts);
+        console.log(this.userPostsC);
+        // this.loadComments(); // Load comments for each post
       },
       (error: any) => {
         console.error('Ошибка при загрузке постов:', error);
       }
     );
   }
+
+  // loadComments(): void {
+  //   for (const post of this.userPosts) {
+  //     this.profileService.getComments(post.id).subscribe(
+  //       (comments: Comment[]) => {
+  //         post.comments = comments;
+  //       },
+  //       (error: any) => {
+  //         console.error('Ошибка при загрузке комментариев:', error);
+  //       }
+  //     );
+  //   }
+  // }
+
 
   likePost(post: Post): void {
     if (!this.isPostLiked(post)) {
@@ -71,4 +90,6 @@ export class PostListComponent implements OnInit {
   openModal(): void {
     this.modalOpen = true;
   }
+
+
 }

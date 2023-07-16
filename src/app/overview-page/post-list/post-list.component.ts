@@ -19,6 +19,7 @@ export class PostListComponent implements OnInit {
     this.loadPosts();
     // this.loadComments();
   }
+
   loadPosts(): void {
     this.profileService.getPosts().subscribe(
       (posts: Post[]) => {
@@ -90,6 +91,21 @@ export class PostListComponent implements OnInit {
   openModal(): void {
     this.modalOpen = true;
   }
-
+  deleteComment(postId: string, commentId: string): void {
+    this.profileService.deleteComment(postId,).subscribe(
+      () => {
+        const post = this.userPosts.find(p => p.id.toString() === postId);
+        if (post) {
+          const index = post.comment.findIndex(c => c.id.toString() === commentId);
+          if (index !== -1) {
+            post.comment.splice(index, 1);
+          }
+        }
+      },
+      (error: any) => {
+        console.error('Ошибка при удалении комментария:', error);
+      }
+    );
+  }
 
 }

@@ -52,6 +52,11 @@ export class ProfileService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
     return this.http.delete(url, { headers });
   }
+  deleteComment(postId: string): Observable<any> {
+    const url = `http://127.0.0.1:80/api/users/post/${postId}`; // Укажите URL для удаления поста
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    return this.http.delete(url, { headers });
+  }
   editPost(post: Post): Observable<any> {
     const url = `http://127.0.0.1:80/api/users/post/${post.id}`; // Укажите URL для редактирования поста
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);

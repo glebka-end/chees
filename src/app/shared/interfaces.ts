@@ -19,8 +19,9 @@ export interface Post {
 
 export interface Comment {
   id: number;
-  postId: number;
+  post_Id: number;
   comment: string;
+  name:string;
   //createdAt: string;
   // Другие свойства комментария
 }

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import {map, Observable, of} from 'rxjs';
 import { tap } from 'rxjs/operators';
-import {CreatePost, Post, User} from '../interfaces';
+import {CreatePost, Post, User,Follwing} from '../interfaces';
 
 
 @Injectable({
@@ -41,6 +41,7 @@ export class ProfileService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
     return this.http.get<User>(url, { headers });
   }
+
   // getPosts(): Observable<Post[]> {
   //   const url = 'http://127.0.0.1:80/api/user/posts'; // Укажите свой URL для получения постов
   //   const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
@@ -52,26 +53,28 @@ export class ProfileService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
     return this.http.delete(url, { headers });
   }
-  deleteComment(postId: string): Observable<any> {
-    const url = `http://127.0.0.1:80/api/users/post/${postId}`; // Укажите URL для удаления поста
+  deleteComment(commentId: string,postId: string): Observable<any> {
+    const url = `http://127.0.0.1:80/api/posts/${postId}/comments/${commentId}`; // Укажите URL для удаления поста
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
     return this.http.delete(url, { headers });
+  }
+  createComment(newComment:any,post:string): Observable<any> {
+    console.log('newComment',newComment)
+    const url = `http://127.0.0.1:80/api/users/post/${post}/comments`; // Укажите URL для удаления поста
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    return this.http.post(url, newComment,{ headers });
+  }
+  updateComments(updateComment:any,postId:string,commentId:string): Observable<any> {
+    console.log('updetComment',updateComment)
+    const url = `http://127.0.0.1:80/api/posts/${postId}/comments/${commentId}`; // Укажите URL для удаления поста
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    return this.http.put(url, updateComment,{ headers });
   }
   editPost(post: Post): Observable<any> {
     const url = `http://127.0.0.1:80/api/users/post/${post.id}`; // Укажите URL для редактирования поста
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
     return this.http.put(url, post, { headers });
   }
-
-  // createPost(data: CreatePost): Observable<any> {
-  //   const url = 'http://127.0.0.1:80/api/users/self-new-post'; // Replace with your actual API endpoint
-  //   const formData = new formData();
-  //   formData.append('title', data.title);
-  //   formData.append('content', data.content);
-  //   formData.append('image', data.image);
-  //
-  //   return this.http.post(url, formData);
-  // }
   createPost(post: any, ): Observable<any> {
     const url = 'http://127.0.0.1:80/api/users/self-new-post'; // Укажите свой URL для создания поста
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
@@ -81,6 +84,14 @@ export class ProfileService {
     const url = 'http://127.0.0.1:80/api/users/users/update-profile';
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
     return this.http.put(url, formData, { headers });
+  }
+
+  getFollwingData(): Observable<Follwing[]> {
+    const url = 'http://127.0.0.1:80/api/users/users/indexFollwing';
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ${this.token}');
+    return this.http.get<{ data: Follwing[] }>(url, { headers }).pipe(
+      map(response => response.data)
+    );
   }
   getPosts(): Observable<Post[]> {
     if (this.cachedPosts.length > 0) {
@@ -94,5 +105,30 @@ export class ProfileService {
         })
       );
     }
+  }
+  // editPost(post: Post): Observable<any> {
+  //   const url = `http://127.0.0.1:80/api/users/post/${post.id}`; // Укажите URL для редактирования поста
+  //   const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+  //   return this.http.put(url, post, { headers });
+  getProfileById(profileId: number): Observable<User> {
+      const url = `http://127.0.0.1:80/api/users/users/show-profile/${profileId}`;
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    return this.http.get<User>(url, { headers });
+  }
+
+  // getFollwingData(): Observable<Follwing[]> {
+  //   const url = 'http://127.0.0.1:80/api/users/users/indexFollwing';
+  //   const headers = new HttpHeaders().set('Authorization', 'Bearer ${this.token}');
+  //   return this.http.get<{ data: Follwing[] }>(url, { headers }).pipe(
+  //     map(response => response.data)
+  //   );
+  // }
+
+  getFollwingById(profileId: any): Observable<Follwing[]> {
+    const url = `http://127.0.0.1:80/api/users/users/indexFollwing/${profileId}`;
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ${this.token}');
+    return this.http.get<{ data: Follwing[] }>(url, { headers }).pipe(
+      map(response => response.data)
+    );
   }
 }

@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-
+import { RouterModule } from '@angular/router'
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {ReactiveFormsModule} from "@angular/forms";
@@ -18,6 +18,7 @@ import {PostListComponent} from './overview-page/post-list/post-list.component';
 import {FormsModule} from '@angular/forms';
 import {CreatPostComponent} from './overview-page/creat-post/creat-post.component';
 import {CommonModule} from "@angular/common";
+import { ProfileFriendComponent } from './overview-page/profile-friend/profile-friend.component';
 
 
 // import { EditProfileComponent } from './overview-page/edit-profile/edit-profile.component';
@@ -36,6 +37,7 @@ import {CommonModule} from "@angular/common";
     ProfilePageComponent,
     PostListComponent,
     CreatPostComponent,
+    ProfileFriendComponent,
 
 
   ],
@@ -55,6 +57,7 @@ import {CommonModule} from "@angular/common";
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    RouterModule,
 
 
   ],

@@ -2,6 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ProfileService } from "../../shared/services/profile.service";
 import { Post, Comment } from "../../shared/interfaces";
 
+
+class CreateComment {
+}
+
+class updateComment {
+}
+
 @Component({
   selector: 'app-post-list',
   templateUrl: './post-list.component.html',
@@ -10,14 +17,24 @@ import { Post, Comment } from "../../shared/interfaces";
 export class PostListComponent implements OnInit {
   userPosts: Post[] = [];
   userPostsC: Comment[] = [];
+
+  modalOpenUpdateCommentsMod: boolean = false;
   modalOpen: boolean = false;
   newCommentContent: string = '';
+  UpdateCommentContent: string = '';
 
   constructor(private profileService: ProfileService) {}
+
 
   ngOnInit(): void {
     this.loadPosts();
     // this.loadComments();
+  }
+  updateCommentsMod(): void {
+    this.modalOpenUpdateCommentsMod = true;
+  }
+  openModal(): void {
+    this.modalOpen = true;
   }
 
   loadPosts(): void {
@@ -34,18 +51,7 @@ export class PostListComponent implements OnInit {
     );
   }
 
-  // loadComments(): void {
-  //   for (const post of this.userPosts) {
-  //     this.profileService.getComments(post.id).subscribe(
-  //       (comments: Comment[]) => {
-  //         post.comments = comments;
-  //       },
-  //       (error: any) => {
-  //         console.error('Ошибка при загрузке комментариев:', error);
-  //       }
-  //     );
-  //   }
-  // }
+
 
 
   likePost(post: Post): void {
@@ -88,24 +94,64 @@ export class PostListComponent implements OnInit {
     );
   }
 
-  openModal(): void {
-    this.modalOpen = true;
-  }
-  deleteComment(postId: string, commentId: string): void {
-    this.profileService.deleteComment(postId,).subscribe(
+  deleteComment(postId: string, commentId:string): void {
+    console.log(commentId)
+    console.log(postId)
+    this.profileService.deleteComment(commentId,postId).subscribe(
       () => {
-        const post = this.userPosts.find(p => p.id.toString() === postId);
-        if (post) {
-          const index = post.comment.findIndex(c => c.id.toString() === commentId);
-          if (index !== -1) {
-            post.comment.splice(index, 1);
-          }
+        const index = this.userPosts.findIndex(post => post.id.toString() === postId);
+        if (index !== -1) {
+          this.userPosts.splice(index, 1);
         }
       },
       (error: any) => {
-        console.error('Ошибка при удалении комментария:', error);
+        alert("что ты творишь не твой коммен) я все знаю пидрила ");
+        console.error('Ошибка при удалении поста:', error);
+      }
+    );
+  }
+  addComment(postId: string): void {
+    const newComment: CreateComment = {
+      comment: this.newCommentContent,
+      post_id: parseInt(postId),
+
+    };
+    console.log(newComment)
+    this.profileService.createComment(newComment,postId).subscribe(
+      (comment: Comment) => {
+        const post = this.userPosts.find(p => p.id.toString() === postId);
+        if (post) {
+          post.comment.push(comment);
+        }
+        this.modalOpen = false;
+        this.newCommentContent = '';
+      },
+      (error: any) => {
+        console.error('Ошибка при добавлении комментария:', error);
       }
     );
   }
 
+  updateComments(postId: string,commentId:string): void {
+
+    const updateComment: updateComment = {
+      comment: this.  UpdateCommentContent,
+      post_id: parseInt(postId),
+       commentId: parseInt(commentId),
+    };
+    console.log('updateComment',updateComment)
+    this.profileService.updateComments(updateComment,postId,commentId).subscribe(
+      (comment: Comment) => {
+        const post = this.userPosts.find(p => p.id.toString() === postId);
+        if (post) {
+          post.comment.push(comment);
+        }
+        this.modalOpen = false;
+        this.newCommentContent = '';
+      },
+      (error: any) => {
+        console.error('Ошибка при  обновлении коммент:', error);
+      }
+    );
+  }
 }

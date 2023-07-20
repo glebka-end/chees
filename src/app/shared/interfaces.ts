@@ -7,19 +7,26 @@ export interface User {
   is_online: boolean;
   // Другие свойства пользователя
 }
-
+export interface Follwing {//подписки
+  id: number;
+  first_name: string;
+  last_name: string;
+  // Другие свойства пользователя
+}
 export interface Post {
   id: number;
   title: string;
-  content: string;
+  contente: string;
   image: string | null;
   likes_count: number;
   comment: Comment[]; // Добавьте поле для комментариев
+
 }
 
 export interface Comment {
-  id: number;
-  post_Id: number;
+  commentId: number;
+  post_id: number;
+  user_id: number;
   comment: string;
   name:string;
   //createdAt: string;

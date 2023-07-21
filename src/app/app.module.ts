@@ -19,6 +19,7 @@ import {FormsModule} from '@angular/forms';
 import {CreatPostComponent} from './overview-page/creat-post/creat-post.component';
 import {CommonModule} from "@angular/common";
 import { ProfileFriendComponent } from './overview-page/profile-friend/profile-friend.component';
+import { PostListFriendComponent } from './overview-page/post-list-friend/post-list-friend.component';
 
 
 // import { EditProfileComponent } from './overview-page/edit-profile/edit-profile.component';
@@ -38,6 +39,7 @@ import { ProfileFriendComponent } from './overview-page/profile-friend/profile-f
     PostListComponent,
     CreatPostComponent,
     ProfileFriendComponent,
+    PostListFriendComponent,
 
 
   ],

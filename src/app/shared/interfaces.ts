@@ -22,7 +22,15 @@ export interface Post {
   comment: Comment[]; // Добавьте поле для комментариев
 
 }
+export interface PostF {
+  id: number;
+  title: string;
+  contente: string;
+  image: string | null;
+  likes_count: number;
+  comment: Comment[]; // Добавьте поле для комментариев
 
+}
 export interface Comment {
   commentId: number;
   post_id: number;

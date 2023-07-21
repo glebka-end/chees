@@ -1,0 +1,57 @@
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+div {
+  max-width: 700px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+// Добавляем стили для контейнера постов
+.post-container {
+  display: flex;
+  //flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: 25%;
+}
+
+// Стили для отдельного поста
+.post {
+  width: calc(33.33% - 20px);
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+@media (max-width: 768px) {
+  .post {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .post {
+    width: 100%;
+  }
+}

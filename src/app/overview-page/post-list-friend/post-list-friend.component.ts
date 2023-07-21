@@ -1,30 +1,30 @@
+
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from "../../shared/services/profile.service";
 import { Post, Comment } from "../../shared/interfaces";
-
-
-class CreateComment {
-}
+import {ActivatedRoute} from "@angular/router";
 
 class updateComment {
 }
 
+class CreateComment {
+}
+
 @Component({
-  selector: 'app-post-list',
-  templateUrl: './post-list.component.html',
-  styleUrls: ['./post-list.component.scss']
+  selector: 'app-post-list-friend',
+  templateUrl: './post-list-friend.component.html',
+  styleUrls: ['./post-list-friend.component.scss']
 })
-export class PostListComponent implements OnInit {
+export class PostListFriendComponent {
   userPosts: Post[] = [];
   userPostsC: Comment[] = [];
-
+  profileId!: number;
   modalOpenUpdateCommentsMod: boolean = false;
   modalOpen: boolean = false;
   newCommentContent: string = '';
   UpdateCommentContent: string = '';
 
-  constructor(private profileService: ProfileService) {}
-
+  constructor(private route: ActivatedRoute,private profileService: ProfileService) {}
 
   ngOnInit(): void {
     this.loadPosts();
@@ -38,12 +38,11 @@ export class PostListComponent implements OnInit {
   }
 
   loadPosts(): void {
-
-    this.profileService.getPosts().subscribe(
+    this.profileId = +this.route.snapshot.params['id'];
+    this.profileService.getPostsFriend(this.profileId).subscribe(
       (posts: Post[]) => {
-        this.userPosts = posts;
-        console.log(this.userPosts);
-        console.log(this.userPostsC);
+        this.userPosts =Object.values(posts);
+        console.log('userPosts pos-lis-f',this.userPosts);
         // this.loadComments(); // Load comments for each post
       },
       (error: any) => {
@@ -51,6 +50,10 @@ export class PostListComponent implements OnInit {
       }
     );
   }
+
+
+
+
   likePost(post: Post): void {
     if (!this.isPostLiked(post)) {
       this.profileService.likePost(post.id.toString()).subscribe(
@@ -134,7 +137,7 @@ export class PostListComponent implements OnInit {
     const updateComment: updateComment = {
       comment: this.  UpdateCommentContent,
       post_id: parseInt(postId),
-       commentId: parseInt(commentId),
+      commentId: parseInt(commentId),
     };
     console.log('updateComment',updateComment)
     this.profileService.updateComments(updateComment,postId,commentId).subscribe(

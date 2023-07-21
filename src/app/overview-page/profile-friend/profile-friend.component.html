@@ -40,7 +40,8 @@
           <ul>
 
             <li *ngFor="let following of userfollwing">
-              <a routerLink="/profilee/{{following.id}}">{{ following.first_name }} {{ following.last_name }}</a>
+              <a routerLink="/profilee/{{following.id}}">
+                {{ following.first_name }} {{ following.last_name }}</a>
             </li>
           </ul>
         </div>
@@ -51,4 +52,4 @@
   </div>
 </div>
 
-<app-post-list></app-post-list>
+<app-post-list-friend></app-post-list-friend>

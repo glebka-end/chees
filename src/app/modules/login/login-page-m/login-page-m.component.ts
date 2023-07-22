@@ -1,16 +1,16 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {AuthService} from "../shared/services/auth.service";
 import {Subscription} from "rxjs";
+import {AuthService} from "../../../shared/services/auth.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 
 @Component({
-  selector: 'app-login-page',
-  templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.scss']
+  selector: 'app-login-page-m',
+  templateUrl: './login-page-m.component.html',
+  styleUrls: ['./login-page-m.component.scss']
 })
-export class LoginPageComponent implements OnInit, OnDestroy {
+
+export class LoginPageMComponent implements OnInit, OnDestroy {
   form!: FormGroup
   aSub!: Subscription
 

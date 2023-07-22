@@ -1,15 +1,16 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../shared/services/auth.service";
-import {Router} from "@angular/router";
 import {Subscription} from "rxjs";
+import {AuthService} from "../../../shared/services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-register-page',
-  templateUrl: './register-page.component.html',
-  styleUrls: ['./register-page.component.scss']
+  selector: 'app-register-page-m',
+  templateUrl: './register-page-m.component.html',
+  styleUrls: ['./register-page-m.component.scss']
 })
-export class RegisterPageComponent implements OnInit,OnDestroy{
+
+export class RegisterPageMComponent implements OnInit,OnDestroy{
   form!: FormGroup
   aSub!: Subscription
 

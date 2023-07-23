@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ProfileService } from "../../shared/services/profile.service";
-import { Post, Comment } from "../../shared/interfaces";
+import {Component, OnInit} from '@angular/core';
+import {ProfileService} from "../../shared/services/profile.service";
+import {Post, Comment} from "../../shared/interfaces";
 
 
 class CreateComment {
@@ -23,16 +23,18 @@ export class PostListComponent implements OnInit {
   newCommentContent: string = '';
   UpdateCommentContent: string = '';
 
-  constructor(private profileService: ProfileService) {}
-
+  constructor(private profileService: ProfileService) {
+  }
 
   ngOnInit(): void {
     this.loadPosts();
     // this.loadComments();
   }
+
   updateCommentsMod(): void {
     this.modalOpenUpdateCommentsMod = true;
   }
+
   openModal(): void {
     this.modalOpen = true;
   }
@@ -44,13 +46,13 @@ export class PostListComponent implements OnInit {
         this.userPosts = posts;
         console.log(this.userPosts);
         console.log(this.userPostsC);
-        // this.loadComments(); // Load comments for each post
       },
       (error: any) => {
         console.error('Ошибка при загрузке постов:', error);
       }
     );
   }
+
   likePost(post: Post): void {
     if (!this.isPostLiked(post)) {
       this.profileService.likePost(post.id.toString()).subscribe(
@@ -91,10 +93,10 @@ export class PostListComponent implements OnInit {
     );
   }
 
-  deleteComment(postId: string, commentId:string): void {
+  deleteComment(postId: string, commentId: string): void {
     console.log(commentId)
     console.log(postId)
-    this.profileService.deleteComment(commentId,postId).subscribe(
+    this.profileService.deleteComment(commentId, postId).subscribe(
       () => {
         const index = this.userPosts.findIndex(post => post.id.toString() === postId);
         if (index !== -1) {
@@ -107,6 +109,7 @@ export class PostListComponent implements OnInit {
       }
     );
   }
+
   addComment(postId: string): void {
     const newComment: CreateComment = {
       comment: this.newCommentContent,
@@ -114,7 +117,7 @@ export class PostListComponent implements OnInit {
 
     };
     console.log(newComment)
-    this.profileService.createComment(newComment,postId).subscribe(
+    this.profileService.createComment(newComment, postId).subscribe(
       (comment: Comment) => {
         const post = this.userPosts.find(p => p.id.toString() === postId);
         if (post) {
@@ -129,15 +132,15 @@ export class PostListComponent implements OnInit {
     );
   }
 
-  updateComments(postId: string,commentId:string): void {
+  updateComments(postId: string, commentId: string): void {
 
     const updateComment: updateComment = {
-      comment: this.  UpdateCommentContent,
+      comment: this.UpdateCommentContent,
       post_id: parseInt(postId),
-       commentId: parseInt(commentId),
+      commentId: parseInt(commentId),
     };
-    console.log('updateComment',updateComment)
-    this.profileService.updateComments(updateComment,postId,commentId).subscribe(
+    console.log('updateComment', updateComment)
+    this.profileService.updateComments(updateComment, postId, commentId).subscribe(
       (comment: Comment) => {
         const post = this.userPosts.find(p => p.id.toString() === postId);
         if (post) {

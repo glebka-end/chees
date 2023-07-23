@@ -1,27 +1,27 @@
-
 <div class="post-container">
   <div class="post" *ngFor="let post of userPosts">
     <h2>{{ post.title }}</h2>
     <p>{{ post.contente }}</p>
     <img [src]="post.image" alt="Изображение поста">
-    <button (click)="likePost(post)">Лайк {{ post.likes_count }} <i class="fa fa-heart" [class.active]="isPostLiked(post)"></i></button>
+    <button (click)="likePost(post)">Лайк {{ post.likes_count }} <i class="fa fa-heart"
+                                                                    [class.active]="isPostLiked(post)"></i></button>
     <button (click)="deletePost(post.id.toString())">Удалить пост</button>
-        <h3>Комментарии:</h3>
-        <ul>
-          <li *ngFor="let comment of post.comment">
-            {{ comment.comment }}  {{ comment.commentId }}
-            <button (click)="deleteComment(post.id.toString(), comment.commentId.toString())">Удалить комментарий</button>
-            <button (click)="updateCommentsMod()">обновить комментарий</button>
-            <div class="modal" *ngIf="modalOpenUpdateCommentsMod">
-              <div class="modal-content">
-                <h3>обн комментарий</h3>
-                <textarea [(ngModel)]="UpdateCommentContent"></textarea>
-                <button (click)="updateComments(post.id.toString(), comment.commentId.toString())">обновить</button>
-                <button (click)="modalOpenUpdateCommentsMod = false">Отмена</button>
-              </div>
-            </div>
-          </li>
-        </ul>
+    <h3>Комментарии:</h3>
+    <ul>
+      <li *ngFor="let comment of post.comment">
+        {{ comment.comment }}  {{ comment.commentId }}
+        <button (click)="deleteComment(post.id.toString(), comment.commentId.toString())">Удалить комментарий</button>
+        <button (click)="updateCommentsMod()">обновить комментарий</button>
+        <div class="modal" *ngIf="modalOpenUpdateCommentsMod">
+          <div class="modal-content">
+            <h3>обн комментарий</h3>
+            <textarea [(ngModel)]="UpdateCommentContent"></textarea>
+            <button (click)="updateComments(post.id.toString(), comment.commentId.toString())">обновить</button>
+            <button (click)="modalOpenUpdateCommentsMod = false">Отмена</button>
+          </div>
+        </div>
+      </li>
+    </ul>
 
     <button (click)="openModal()">Добавить комментарий</button>
     <div class="modal" *ngIf="modalOpen">

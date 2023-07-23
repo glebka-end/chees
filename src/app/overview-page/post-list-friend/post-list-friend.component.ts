@@ -1,7 +1,6 @@
-
-import { Component, OnInit } from '@angular/core';
-import { ProfileService } from "../../shared/services/profile.service";
-import { Post, Comment } from "../../shared/interfaces";
+import {Component, OnInit} from '@angular/core';
+import {ProfileService} from "../../shared/services/profile.service";
+import {Post, Comment} from "../../shared/interfaces";
 import {ActivatedRoute} from "@angular/router";
 
 class updateComment {
@@ -24,15 +23,17 @@ export class PostListFriendComponent {
   newCommentContent: string = '';
   UpdateCommentContent: string = '';
 
-  constructor(private route: ActivatedRoute,private profileService: ProfileService) {}
+  constructor(private route: ActivatedRoute, private profileService: ProfileService) {
+  }
 
   ngOnInit(): void {
     this.loadPosts();
-    // this.loadComments();
   }
+
   updateCommentsMod(): void {
     this.modalOpenUpdateCommentsMod = true;
   }
+
   openModal(): void {
     this.modalOpen = true;
   }
@@ -41,8 +42,8 @@ export class PostListFriendComponent {
     this.profileId = +this.route.snapshot.params['id'];
     this.profileService.getPostsFriend(this.profileId).subscribe(
       (posts: Post[]) => {
-        this.userPosts =Object.values(posts);
-        console.log('userPosts pos-lis-f',this.userPosts);
+        this.userPosts = Object.values(posts);
+        console.log('userPosts pos-lis-f', this.userPosts);
         // this.loadComments(); // Load comments for each post
       },
       (error: any) => {
@@ -50,9 +51,6 @@ export class PostListFriendComponent {
       }
     );
   }
-
-
-
 
   likePost(post: Post): void {
     if (!this.isPostLiked(post)) {
@@ -94,10 +92,10 @@ export class PostListFriendComponent {
     );
   }
 
-  deleteComment(postId: string, commentId:string): void {
+  deleteComment(postId: string, commentId: string): void {
     console.log(commentId)
     console.log(postId)
-    this.profileService.deleteComment(commentId,postId).subscribe(
+    this.profileService.deleteComment(commentId, postId).subscribe(
       () => {
         const index = this.userPosts.findIndex(post => post.id.toString() === postId);
         if (index !== -1) {
@@ -110,6 +108,7 @@ export class PostListFriendComponent {
       }
     );
   }
+
   addComment(postId: string): void {
     const newComment: CreateComment = {
       comment: this.newCommentContent,
@@ -117,7 +116,7 @@ export class PostListFriendComponent {
 
     };
     console.log(newComment)
-    this.profileService.createComment(newComment,postId).subscribe(
+    this.profileService.createComment(newComment, postId).subscribe(
       (comment: Comment) => {
         const post = this.userPosts.find(p => p.id.toString() === postId);
         if (post) {
@@ -132,15 +131,15 @@ export class PostListFriendComponent {
     );
   }
 
-  updateComments(postId: string,commentId:string): void {
+  updateComments(postId: string, commentId: string): void {
 
     const updateComment: updateComment = {
-      comment: this.  UpdateCommentContent,
+      comment: this.UpdateCommentContent,
       post_id: parseInt(postId),
       commentId: parseInt(commentId),
     };
-    console.log('updateComment',updateComment)
-    this.profileService.updateComments(updateComment,postId,commentId).subscribe(
+    console.log('updateComment', updateComment)
+    this.profileService.updateComments(updateComment, postId, commentId).subscribe(
       (comment: Comment) => {
         const post = this.userPosts.find(p => p.id.toString() === postId);
         if (post) {

@@ -7,7 +7,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthLayoutComponent} from './shared/layouts/auth-layout/auth-layout.component';
 import {SiteLayoutComponent} from './shared/layouts/site-layout/site-layout.component';
-import {TokenInterceptor} from "./shared/classes/token.interceptor";
+import {TokenInterceptor} from "./shared/Interceptor-and-authGuard/token.interceptor";
 import {OverviewPageComponent} from './overview-page/overview-page.component';
 import {EditProfileComponent} from "./overview-page/edit-profile/edit-profile.component";
 import {ProfilePageComponent} from './overview-page/profile-page/profile-page.component';
@@ -19,8 +19,7 @@ import { ProfileFriendComponent } from './overview-page/profile-friend/profile-f
 import { PostListFriendComponent } from './overview-page/post-list-friend/post-list-friend.component';
 import {LoginModule} from "./modules/login/login.module";
 import {RegisterPageMModule} from "./modules/register-page-m/register-page-m.module";
-// import { EditProfileComponent } from './overview-page/edit-profile/edit-profile.component';
-// import { ProfileServiceComponent } from './overview-page/edit-profile/profile.service/profile.service.component';
+
 
 
 
@@ -46,8 +45,6 @@ import {RegisterPageMModule} from "./modules/register-page-m/register-page-m.mod
       provide: HTTP_INTERCEPTORS,
       multi: true,
       useClass: TokenInterceptor,
-      //  provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true
-
     }
   ],
   imports: [
@@ -60,9 +57,6 @@ import {RegisterPageMModule} from "./modules/register-page-m/register-page-m.mod
     RouterModule,
     LoginModule,
     RegisterPageMModule,
-
-
-
   ],
 
   bootstrap: [AppComponent]

@@ -28,7 +28,7 @@ export class LoginPageMComponent implements OnInit, OnDestroy {
     this.route.queryParams.subscribe((params: Params) => {
       if (params['registered']) {
         //теперь вы можете зайти в сиситему используя свои данные
-      } else if (params['accessDenied']){
+      } else if (params['accessDenied']) {
         //для начала авторизуйтесь в  сиситеме
       }
     })

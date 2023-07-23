@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./register-page-m.component.scss']
 })
 
-export class RegisterPageMComponent implements OnInit,OnDestroy{
+export class RegisterPageMComponent implements OnInit, OnDestroy {
   form!: FormGroup
   aSub!: Subscription
 
@@ -25,6 +25,7 @@ export class RegisterPageMComponent implements OnInit,OnDestroy{
       name: new FormControl(null, [Validators.required, Validators.minLength(6)])
     })
   }
+
   ngOnDestroy() {
     if (this.aSub) {
       this.aSub.unsubscribe()
@@ -33,7 +34,7 @@ export class RegisterPageMComponent implements OnInit,OnDestroy{
 
   onSubmit() {
     this.form.disable()
-    this.aSub=this.auth.register(this.form.value).subscribe(
+    this.aSub = this.auth.register(this.form.value).subscribe(
       () => {
         this.router.navigate(['/login'], {
           queryParams: {

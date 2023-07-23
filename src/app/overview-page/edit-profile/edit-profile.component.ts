@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { ProfileService } from "../../shared/services/profile.service";
-import { User } from "../../shared/interfaces";
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ProfileService} from "../../shared/services/profile.service";
+import {User} from "../../shared/interfaces";
 
 
 @Component({
@@ -13,7 +13,9 @@ export class EditProfileComponent implements OnInit {
   form!: FormGroup;
   error: object | null = null;
   user: User | null = null;
-  constructor(private fb: FormBuilder, private profileService: ProfileService) {}
+
+  constructor(private fb: FormBuilder, private profileService: ProfileService) {
+  }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -56,11 +58,9 @@ export class EditProfileComponent implements OnInit {
     this.profileService.sendData(data).subscribe(
       (response: any) => {
         console.log(response);
-        // Обработка успешного ответа от сервера
       },
       (error: any) => {
         console.log(error);
-        // Обработка ошибки
       }
     );
   }

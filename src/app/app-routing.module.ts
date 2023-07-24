@@ -4,11 +4,11 @@ import {SiteLayoutComponent} from "./shared/layouts/site-layout/site-layout.comp
 import {AuthLayoutComponent} from "./shared/layouts/auth-layout/auth-layout.component";
 import {AuthGuard} from "./shared/Interceptor-and-authGuard/auth.guard";
 import {OverviewPageComponent} from "./overview-page/overview-page.component";
-import {EditProfileComponent} from "./overview-page/edit-profile/edit-profile.component";
 import {ProfilePageComponent} from "./overview-page/profile-page/profile-page.component";
 import {ProfileFriendComponent} from "./overview-page/profile-friend/profile-friend.component";
 import {LoginPageMComponent} from "./modules/login/login-page-m/login-page-m.component";
 import {RegisterPageMComponent} from "./modules/register-page-m/register-page-m/register-page-m.component";
+import {EditProfileMComponent} from "./modules/edit-profile/edit-profile-m/edit-profile-m.component";
 
 const routes: Routes = [
 
@@ -23,7 +23,7 @@ const routes: Routes = [
     path: '', component: SiteLayoutComponent, canActivate:[AuthGuard] ,children:[
       { path: 'profilee/:id', component: ProfileFriendComponent},
       {path: 'overview' , component: OverviewPageComponent, children:[
-         {path: 'edit' , component: EditProfileComponent},
+         {path: 'edit' , component: EditProfileMComponent},
           {
             path: 'profile', component: ProfilePageComponent, children: [
 

@@ -41,8 +41,6 @@ export class LoginPageMComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-// const user={
-//  // email: this.form.value.email,
     this.form.disable()//выключить может
 
     this.aSub = this.auth.login(this.form.value).subscribe(

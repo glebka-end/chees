@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ProfileService} from "../../shared/services/profile.service";
-import {User} from "../../shared/interfaces";
-
+import {User} from "../../../shared/interfaces";
+import {ProfileService} from "../../../shared/services/profile.service";
 
 @Component({
-  selector: 'app-edit-profile',
-  templateUrl: './edit-profile.component.html',
-  styleUrls: ['./edit-profile.component.scss']
+  selector: 'app-edit-profile-m',
+  templateUrl: './edit-profile-m.component.html',
+  styleUrls: ['./edit-profile-m.component.scss']
 })
-export class EditProfileComponent implements OnInit {
+
+export class EditProfileMComponent implements OnInit {
   form!: FormGroup;
   error: object | null = null;
   user: User | null = null;

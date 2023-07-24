@@ -1,10 +1,10 @@
+
 <div class="profile-container">
   <h2>Profile</h2>
 
   <div class="profile-info">
     <div class="info-group">
       <label>First Name:</label>
-      <span>{{ user?.first_name }}</span>
     </div>
 
     <div class="info-group">
@@ -43,12 +43,14 @@
               <a routerLink="/profilee/{{following.id}}">
                 {{ following.first_name }} {{ following.last_name }}</a>
             </li>
+
           </ul>
         </div>
       </div>
       <button (click)="modalOpenUpdateFollwingMod = false">Отмена</button>
     </div>
 
+          <button (click)="subscribe()">subscribe</button>
   </div>
 </div>
 

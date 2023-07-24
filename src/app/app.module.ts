@@ -9,7 +9,6 @@ import {AuthLayoutComponent} from './shared/layouts/auth-layout/auth-layout.comp
 import {SiteLayoutComponent} from './shared/layouts/site-layout/site-layout.component';
 import {TokenInterceptor} from "./shared/Interceptor-and-authGuard/token.interceptor";
 import {OverviewPageComponent} from './overview-page/overview-page.component';
-import {EditProfileComponent} from "./overview-page/edit-profile/edit-profile.component";
 import {ProfilePageComponent} from './overview-page/profile-page/profile-page.component';
 import {PostListComponent} from './overview-page/post-list/post-list.component';
 import {FormsModule} from '@angular/forms';
@@ -19,6 +18,7 @@ import { ProfileFriendComponent } from './overview-page/profile-friend/profile-f
 import { PostListFriendComponent } from './overview-page/post-list-friend/post-list-friend.component';
 import {LoginModule} from "./modules/login/login.module";
 import {RegisterPageMModule} from "./modules/register-page-m/register-page-m.module";
+import {EditProfileModule} from "./modules/edit-profile/edit-profile.module";
 
 
 
@@ -30,7 +30,6 @@ import {RegisterPageMModule} from "./modules/register-page-m/register-page-m.mod
     AuthLayoutComponent,
     SiteLayoutComponent,
     OverviewPageComponent,
-    EditProfileComponent,
     ProfilePageComponent,
     PostListComponent,
     CreatPostComponent,
@@ -57,6 +56,7 @@ import {RegisterPageMModule} from "./modules/register-page-m/register-page-m.mod
     RouterModule,
     LoginModule,
     RegisterPageMModule,
+    EditProfileModule,
   ],
 
   bootstrap: [AppComponent]

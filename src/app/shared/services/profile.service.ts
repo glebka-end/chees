@@ -136,4 +136,9 @@ export class ProfileService {
       map(response => response.data)
     );
   }
+  postSubscribeById(profileId: any): Observable<any> {
+    const url = `http://127.0.0.1:80/api/users/users/store-Follwing/${profileId}`;
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    return this.http.post(url, {headers});
+  }
 }

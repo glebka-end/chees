@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ProfileService} from "../../shared/services/profile.service";
 import {Post, Comment} from "../../shared/interfaces";
 import {ActivatedRoute} from "@angular/router";
-
 class updateComment {
 }
 

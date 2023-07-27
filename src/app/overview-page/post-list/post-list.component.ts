@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProfileService} from "../../shared/services/profile.service";
 import {Post, Comment} from "../../shared/interfaces";
+import {NgForm} from "@angular/forms";
 
 
 class CreateComment {
@@ -17,6 +18,7 @@ class updateComment {
 export class PostListComponent implements OnInit {
   userPosts: Post[] = [];
   userPostsC: Comment[] = [];
+  fileData: any;
 
   modalOpenUpdateCommentsMod: boolean = false;
   modalOpen: boolean = false;
@@ -30,7 +32,23 @@ export class PostListComponent implements OnInit {
     this.loadPosts();
     // this.loadComments();
   }
+  fileEvent(e: any) {
+    this.fileData = e.target.files[0];
+  }
 
+  onSubmitform(f: NgForm) {
+    if (f.invalid) return; // Проверка на валидность формы
+
+    const formData = new FormData();
+    formData.append('immage', this.fileData);
+    formData.append('contente', f.value.contente);
+    formData.append('title', f.value.title);
+
+    this.profileService.createPost(formData).subscribe(resp => {
+      alert("Uploaded");
+      console.log(resp);
+    });
+  }
   updateCommentsMod(): void {
     this.modalOpenUpdateCommentsMod = true;
   }
@@ -44,8 +62,6 @@ export class PostListComponent implements OnInit {
     this.profileService.getPosts().subscribe(
       (posts: Post[]) => {
         this.userPosts = posts;
-        console.log(this.userPosts);
-        console.log(this.userPostsC);
       },
       (error: any) => {
         console.error('Ошибка при загрузке постов:', error);

@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map, Observable, of} from 'rxjs';
 import {tap} from 'rxjs/operators';
-import {CreatePost, Post, User, Follwing, PostF} from '../interfaces';
+import {CreatePost, Post, User, Follwing, isSubscribed, applicationsIndexFollowers} from '../interfaces';
 
 
 @Injectable({
@@ -109,12 +109,12 @@ export class ProfileService {
     }
   }
 
-  getPostsFriend(profileId: number): Observable<PostF[]> {
+  getPostsFriend(profileId: number): Observable<Post[]> {
     if (this.cachedPosts.length > 0) {
       return of(this.cachedPosts);
     } else {
       return this.http.get<Post[]>(
-        `http://127.0.0.1:80/api/users/users/show-profile/${profileId}`)
+        `http://127.0.0.1:80/api/user/posts/friend/${profileId}`)
         .pipe(
           tap(posts => {
             this.cachedPosts = posts; // Кэшируем полученные данные
@@ -140,5 +140,31 @@ export class ProfileService {
     const url = `http://127.0.0.1:80/api/users/users/store-Follwing/${profileId}`;
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
     return this.http.post(url, {headers});
+  }
+  signedOrNot(profileId: any): Observable<isSubscribed> {
+    const url = `http://127.0.0.1:80/api/users/users/signed-Or-Not-Follwing/${profileId}`;
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    return this.http.get<isSubscribed>(url, {headers});
+  }
+
+
+  getApplicationsIndexFollowers(): Observable<Follwing[]> {
+    const url = 'http://127.0.0.1:80/api/users/users/applicationsIndexFollowers';
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ${this.token}');
+    return this.http.get<{ data: Follwing[] }>(url, {headers}).pipe(
+      map(response => response.data)
+    );
+  }
+
+  acceptFriendRequest(profile_Id: number) {
+    const url = `http://127.0.0.1:80/api/users/users/accept-TheApplications-Followers/${profile_Id}`;
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    return this.http.put<isSubscribed>(url, {headers});
+  }
+
+  rejectFriendRequest(profile_Id: number) {
+    const url = `http://127.0.0.1:80/api/users/users/does-Not-Accept-The-Applications-Followers/${profile_Id}`;
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    return this.http.put<isSubscribed>(url, {headers});
   }
 }

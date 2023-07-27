@@ -1,3 +1,12 @@
+<form #f="ngForm" (ngSubmit)="onSubmitform(f)">
+  <input type="file" name="myFile" (change)="fileEvent($event)" />
+  <input type="text" name="contente" ngModel placeholder="Content" required />
+  <input type="text" name="title" ngModel placeholder="Title" required />
+  <button>Upload Image</button>
+</form>
+
+
+
 <div class="post-container">
   <div class="post" *ngFor="let post of userPosts">
     <h2>{{ post.title }}</h2>
@@ -9,6 +18,7 @@
     <h3>Комментарии:</h3>
     <ul>
       <li *ngFor="let comment of post.comment">
+<!--      <li *ngFor="let comment of post.comment; let index = i">-->
         {{ comment.comment }}  {{ comment.commentId }}
         <button (click)="deleteComment(post.id.toString(), comment.commentId.toString())">Удалить комментарий</button>
         <button (click)="updateCommentsMod()">обновить комментарий</button>

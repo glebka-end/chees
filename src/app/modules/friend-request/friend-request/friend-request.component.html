@@ -1,0 +1,16 @@
+<div class="modal-content">
+  <div class="info-group">
+    <label>Following:</label>
+    <ul>
+
+
+      <li *ngFor="let following of userfollwing">
+        <a routerLink="/profilee/{{following.id}}">
+          {{ following.first_name }} {{ following.last_name }} </a>
+          <button (click)="acceptFriendRequest(following.id)">Принять</button>
+          <button (click)="rejectFriendRequest(following.id)">Отклонить</button>
+
+      </li>
+    </ul>
+  </div>
+</div>

@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./overview-page.component.scss']
 })
 export class OverviewPageComponent {
-
+// <li *ngFor="let following of userfollwing">
+// <a (click)="navigateToAnotherPage()">
+// {{ following.first_name }} {{ following.last_name }}
+// </a>
+// </li>
 }

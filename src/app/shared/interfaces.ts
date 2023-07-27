@@ -22,25 +22,18 @@ export interface Post {
   comment: Comment[]; // Добавьте поле для комментариев
 
 }
-export interface PostF {
-  id: number;
-  title: string;
-  contente: string;
-  image: string | null;
-  likes_count: number;
-  comment: Comment[]; // Добавьте поле для комментариев
 
-}
 export interface Comment {
   commentId: number;
   post_id: number;
   user_id: number;
   comment: string;
   name:string;
-  //createdAt: string;
-  // Другие свойства комментария
-}
 
+}
+export interface isSubscribed {
+  status:any;
+}
 
 export interface CreatePost {
   title: string;
@@ -48,3 +41,8 @@ export interface CreatePost {
   image: any | null;
 }
 
+export interface applicationsIndexFollowers {
+  id: number;
+  first_name: string;
+  last_name: string;
+}

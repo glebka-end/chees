@@ -12,13 +12,13 @@ import {OverviewPageComponent} from './overview-page/overview-page.component';
 import {ProfilePageComponent} from './overview-page/profile-page/profile-page.component';
 import {PostListComponent} from './overview-page/post-list/post-list.component';
 import {FormsModule} from '@angular/forms';
-import {CreatPostComponent} from './overview-page/creat-post/creat-post.component';
 import {CommonModule} from "@angular/common";
 import { ProfileFriendComponent } from './overview-page/profile-friend/profile-friend.component';
 import { PostListFriendComponent } from './overview-page/post-list-friend/post-list-friend.component';
 import {LoginModule} from "./modules/login/login.module";
 import {RegisterPageMModule} from "./modules/register-page-m/register-page-m.module";
 import {EditProfileModule} from "./modules/edit-profile/edit-profile.module";
+import {FriendRequestComponent} from "./modules/friend-request/friend-request/friend-request.component";
 
 
 
@@ -32,9 +32,9 @@ import {EditProfileModule} from "./modules/edit-profile/edit-profile.module";
     OverviewPageComponent,
     ProfilePageComponent,
     PostListComponent,
-    CreatPostComponent,
     ProfileFriendComponent,
     PostListFriendComponent,
+    FriendRequestComponent,
 
 
 

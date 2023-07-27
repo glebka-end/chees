@@ -41,7 +41,8 @@
 
             <li *ngFor="let following of userfollwing">
               <a routerLink="/profilee/{{following.id}}">
-                {{ following.first_name }} {{ following.last_name }}</a>
+                {{ following.first_name }} {{ following.last_name }}
+              </a>
             </li>
 
           </ul>
@@ -50,7 +51,10 @@
       <button (click)="modalOpenUpdateFollwingMod = false">Отмена</button>
     </div>
 
-          <button (click)="subscribe()">subscribe</button>
+    <button *ngIf="!IsSubscribed2" (click)="subscribe()">Подписаться</button>
+    <button *ngIf="IsSubscribed2" (click)="subscribe()">Отписаться</button>
+
+    <button (click)="goToProfile()">lili</button>
   </div>
 </div>
 

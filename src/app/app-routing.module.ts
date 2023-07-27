@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {SiteLayoutComponent} from "./shared/layouts/site-layout/site-layout.component";
 import {AuthLayoutComponent} from "./shared/layouts/auth-layout/auth-layout.component";
 import {AuthGuard} from "./shared/Interceptor-and-authGuard/auth.guard";
@@ -9,26 +9,30 @@ import {ProfileFriendComponent} from "./overview-page/profile-friend/profile-fri
 import {LoginPageMComponent} from "./modules/login/login-page-m/login-page-m.component";
 import {RegisterPageMComponent} from "./modules/register-page-m/register-page-m/register-page-m.component";
 import {EditProfileMComponent} from "./modules/edit-profile/edit-profile-m/edit-profile-m.component";
+import {FriendRequestComponent} from "./modules/friend-request/friend-request/friend-request.component";
 
 const routes: Routes = [
 
   {
-    path: '', component: AuthLayoutComponent, children:[
-      {path: '', redirectTo:'/login' ,pathMatch:'full'},
-      {path: 'login' , component: LoginPageMComponent},
-      {path: 'register' , component:    RegisterPageMComponent},
+    path: '', component: AuthLayoutComponent, children: [
+      {path: '', redirectTo: '/login', pathMatch: 'full'},
+      {path: 'login', component: LoginPageMComponent},
+      {path: 'register', component: RegisterPageMComponent},
     ]
   },
   {
-    path: '', component: SiteLayoutComponent, canActivate:[AuthGuard] ,children:[
-      { path: 'profilee/:id', component: ProfileFriendComponent},
-      {path: 'overview' , component: OverviewPageComponent, children:[
-         {path: 'edit' , component: EditProfileMComponent},
+    path: '', component: SiteLayoutComponent, canActivate: [AuthGuard], children: [
+      {path: 'profilee/:id', component: ProfileFriendComponent},
+      {
+        path: 'overview', component: OverviewPageComponent, children: [
+          {path: 'edit', component: EditProfileMComponent},
+          {path: 'friend-request', component: FriendRequestComponent},
+
           {
             path: 'profile', component: ProfilePageComponent, children: [
 
 
-              {path: 'profilee/:id', component: ProfileFriendComponent},
+              // {path: 'profilee/:id', component: ProfileFriendComponent},
             ]
           }
         ]
@@ -41,4 +45,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
